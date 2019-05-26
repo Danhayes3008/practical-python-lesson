@@ -1,3 +1,13 @@
+def is_even(number):
+    """
+    A simple helper function that will check to see if a number is even or not
+    `number` is the number that we wish to check
+    Returns True or False depending on whether or not the number is evenly
+    divisble by 2
+    """
+    return number % 2 == 0
+
+
 def even_number_of_evens(numbers):
     """
     Returns the number of even numbers contained in a list of numbers.
@@ -7,27 +17,13 @@ def even_number_of_evens(numbers):
         - if `numbers` is empty, return `False`
         - if the number of even numbers is odd, return `False`
         - if the number of even numbers is 0, return `False`
-        - if the number od even numbers is even, return `True`
+        - if the number of even numbers is even, return `True`
     """
-
-    # Check to see if the list is empty
-    if numbers == []:
-        return False
-    else:
-        # Set a `number_of_evens` variable that will be incremented each time
-        # an even number is found
-        evens = 0
         
     # Iterate of over each item and if it's an even number, increment the
     # `evens` variable
-    for number in numbers:
-        if number % 2 == 0:
-            evens += 1
-    
-    if evens == 0:
-        return False
-    else:
-        return evens % 2 == 0
+    evens = sum([1 for n in numbers if is_even(n)])
+    return False if evens == 0 else is_even(evens)
 
 # Our set of test cases
 assert even_number_of_evens([]) == False, "No numbers"
